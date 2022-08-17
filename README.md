@@ -25,13 +25,22 @@ DB_PASSWORD=123456
 ```php 
 $ php artisan migrate
 ```
-5. Генерация секретного ключа JWT
+
+
+5. Заполнение БД 
+```php 
+$ php artisan db:seed
+```
+
+
+6. Генерация секретного ключа JWT
 ```php
 $ php artisan jwt:secret
 
 JWT_TTL=1800
 JWT_SECRET=YourSecretKeyHashed
 ```
+
 
 6. Запуск сервера
 ```php 
