@@ -53,12 +53,3 @@ $ php artisan serve
 ```
 
 
-
-Package:
-```
-$ composer require tymon/jwt-auth:*
-```
-
-Links:
-- https://github.com/tymondesigns/jwt-auth
-- https://jwt-auth.readthedocs.io/en/develop/laravel-installation/

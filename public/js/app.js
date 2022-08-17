@@ -5362,8 +5362,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Login"
+  name: "Login",
+  data: function data() {
+    return {
+      credentials: {
+        email: '',
+        password: ''
+      },
+      loading: true
+    };
+  },
+  methods: {
+    login: function login() {
+      axios__WEBPACK_IMPORTED_MODULE_0___default().post('/api/v1/login', this.credentials).then(function (res) {
+        if (res.data.success) {
+          console.log(res.data);
+        }
+      })["catch"](function (err) {
+        console.log('Error!');
+      });
+    }
+  }
 });
 
 /***/ }),
@@ -5475,13 +5498,6 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
-};
-
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
   return _c("div", {
     staticClass: "login"
   }, [_c("form", {
@@ -5491,23 +5507,63 @@ var staticRenderFns = [function () {
   }, [_c("div", {
     staticClass: "form-group"
   }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.credentials.email,
+      expression: "credentials.email"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "email",
       placeholder: "Введите е-майл"
+    },
+    domProps: {
+      value: _vm.credentials.email
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.credentials, "email", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("div", {
     staticClass: "form-group mt-3 mb-3"
   }, [_c("input", {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: _vm.credentials.password,
+      expression: "credentials.password"
+    }],
     staticClass: "form-control",
     attrs: {
       type: "password",
       placeholder: "Введите пароль"
+    },
+    domProps: {
+      value: _vm.credentials.password
+    },
+    on: {
+      input: function input($event) {
+        if ($event.target.composing) return;
+
+        _vm.$set(_vm.credentials, "password", $event.target.value);
+      }
     }
   })]), _vm._v(" "), _c("button", {
-    staticClass: "btn btn-primary"
+    staticClass: "btn btn-primary",
+    on: {
+      click: function click($event) {
+        $event.preventDefault();
+        return _vm.login.apply(null, arguments);
+      }
+    }
   }, [_vm._v("Войти")])])]);
-}];
+};
+
+var staticRenderFns = [];
 render._withStripped = true;
 
 

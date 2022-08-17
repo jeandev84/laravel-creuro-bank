@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['namespace' => 'Auth\\'], function () {
+    Route::post('login', 'LoginController@index');
+    Route::post('logout', 'LogoutController@index');
 });
 
+Route::group(['middleware' => ['jwt.verify']], function () {
 
+    Route::apiResources([
+        'parkings' => 'ParkingController'
+    ]);
 
-Route::apiResources([
-    'parkings' => 'ParkingController'
-]);
+    Route::post('refresh-token', 'Auth\\RefreshTokenController@index');
+});
