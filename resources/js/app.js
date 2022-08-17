@@ -25,8 +25,10 @@ window.Vue = require('vue').default;
 
 
 /**
- * Import Vue Router and use in Vue.
- */
+ * Imports
+*/
+
+
 
 import VueRouter from "vue-router";
 import {Vuelidate} from "vuelidate";
@@ -36,25 +38,15 @@ Vue.use(VueRouter)
 Vue.use(Vuelidate)
 
 
-/**
- * Routing
-*/
-
-import App from './components/App'
-import Home from './components/Home'
+import App from './app/App'
+import { routes } from './app/routes'
 
 
 
 /** router */
 const router = new VueRouter({
     'mode': 'history',
-    routes: [
-        {
-            path: '/',
-            name: 'home',
-            component: Home
-        }
-    ]
+     routes
 })
 
 
@@ -67,6 +59,6 @@ const router = new VueRouter({
 
 const app = new Vue({
     el: '#app',
-    components: {App},
-    router: router
+    router: router,
+    render : app => app(App)
 });
