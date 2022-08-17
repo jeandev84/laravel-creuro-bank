@@ -41,6 +41,11 @@ JWT_TTL=1800
 JWT_SECRET=YourSecretKeyHashed
 ```
 
+7. Установки зависимостей для фронтенд части
+```
+$ npm install
+```
+
 
 6. Запуск сервера
 ```php 
