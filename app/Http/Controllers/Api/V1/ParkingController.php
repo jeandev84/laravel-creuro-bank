@@ -21,8 +21,10 @@ class ParkingController extends Controller
      */
     public function index()
     {
-          return ParkingResource::collection(Parking::all());
+          return ParkingResource::collection(Parking::orderBy('created_at', 'desc')->get());
     }
+
+
 
     /**
      * Store a newly created resource in storage.
