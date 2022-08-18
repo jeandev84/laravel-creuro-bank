@@ -7,7 +7,7 @@ import middleware from './middleware';
 import Login from "../views/auth/Login";
 import ParkingIndex from "../views/parking/ParkingIndex";
 import ParkingCreate from "../views/parking/ParkingCreate";
-import ParkingEdit from "../views/parking/ParkingEdit";
+import ParkingShow from "../views/parking/ParkingShow";
 
 
 
@@ -31,9 +31,18 @@ export default [
         beforeEnter: middleware.user
     },
     {
-        path: '/parking/:id/edit',
+        path: '/parking/:id',
+        name: 'parkingShow',
+        component: ParkingShow,
+        props: true,
+        beforeEnter: middleware.user
+    }/*,
+    {
+        path: '/parking/:parkingId/edit',
         name: 'parkingEdit',
         component: ParkingEdit,
+        props: true,
         beforeEnter: middleware.user
     },
+    */
 ];

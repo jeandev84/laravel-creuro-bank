@@ -25,7 +25,7 @@
                  <td>{{ parking.city }}</td>
                  <td>{{ parking.address_parking }}</td>
                  <td>
-                     <router-link to="">
+                     <router-link :to="{'name': 'parkingShow', params: {id: parking.id}}">
                          <i class="fas fa-pencil-alt" style="font-size: 15px; cursor: pointer;"></i>
                      </router-link>
                      <button @click="deleteParking(parking.id)" class="button_tash">
@@ -73,9 +73,6 @@ export default {
                         this.loading = false
                     }, 300)
                 })
-        },
-        editParking(id) {
-
         },
         deleteParking(id) {
 
