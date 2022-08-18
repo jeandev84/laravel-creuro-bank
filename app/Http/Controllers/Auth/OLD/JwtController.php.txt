@@ -1,0 +1,33 @@
+<?php
+namespace App\Http\Controllers\Auth;
+
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Jwt\JwtLoginRequest;
+use Auth;
+use Validator;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+
+/**
+ *
+*/
+class JwtController extends Controller
+{
+
+      public function __construct()
+      {
+           $this->middleware('auth:api', ['except' => ['login', 'register']]);
+      }
+
+
+
+      public function login(JwtLoginRequest $request): \Illuminate\Http\JsonResponse
+      {
+            $credentials = $request->only('email', 'password');
+
+            return response()->json(['data' => $credentials]);
+      }
+}

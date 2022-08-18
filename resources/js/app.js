@@ -9,6 +9,18 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
+
+/**
+ * Imports
+*/
+
+
+
+import VueRouter from "vue-router";
+import {Vuelidate} from "vuelidate";
+
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -24,14 +36,6 @@ window.Vue = require('vue').default;
 
 
 
-/**
- * Imports
-*/
-
-
-
-import VueRouter from "vue-router";
-import {Vuelidate} from "vuelidate";
 
 
 Vue.use(VueRouter)
@@ -40,7 +44,7 @@ Vue.use(Vuelidate)
 
 import App from './app/App'
 import { routes } from './app/routes'
-
+import { store } from './app/store'
 
 
 /** router */
@@ -60,5 +64,6 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router: router,
+    store: store,
     render : app => app(App)
 });

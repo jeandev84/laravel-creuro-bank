@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\JwtController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Auth\\'], function () {
-    Route::post('login', 'LoginController@index');
-    Route::post('logout', 'LogoutController@index');
-});
+Route::prefix('v1')->group(function () {
 
-Route::group(['middleware' => ['jwt.verify']], function () {
+    Route::get('admin', [\App\Http\Controllers\AdminController::class, 'index']);
 
-    Route::apiResources([
-        'parkings' => 'ParkingController'
-    ]);
+    Route::prefix('auth')->group(function () {
+          Route::post('login', [JwtController::class, 'login']);
+          Route::post('checkToken', [JwtController::class, 'checkToken']);
+          Route::post('logout', [JwtController::class, 'logout']);
+    });
 
-    Route::post('refresh-token', 'Auth\\RefreshTokenController@index');
 });

@@ -1,5 +1,6 @@
 <template>
       <div class="login">
+          <h3>Credit Europa Bank</h3>
           <form action="">
               <div class="form-group">
                   <input type="email" class="form-control" placeholder="Введите е-майл" v-model="credentials.email">
@@ -32,14 +33,16 @@ export default {
 
         login() {
 
-             axios.post('/api/v1/login', this.credentials)
+             axios.post('/api/v1/auth/login', this.credentials)
                   .then(res => {
                       if (res.data.success) {
-                           console.log(res.data)
+                           console.log(res.data.token)
+                           this.$store.commit('setToken', res.data.token)
                       }
+
                   })
                  .catch(err => {
-                      console.log('Error!')
+                      console.log(err)
                  })
         }
     }
