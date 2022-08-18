@@ -1,7 +1,7 @@
 <template>
     <div class="parking_show">
-        <h1>Редактирование стоянки : {{ id }}</h1>
-        <form @submit.prevent="editParking">
+        <h1>Редактирование стоянки : {{ parkingId }}</h1>
+        <form @submit.prevent="editParking(parkingId)">
             <div class="row mb-3">
                 <div class="col-6">
                     <div class="form-group">
@@ -23,7 +23,7 @@
 export default {
     name: "ParkingShow",
     props: [
-        'id'
+        'parkingId'
     ],
     data() {
 
@@ -41,7 +41,7 @@ export default {
     methods: {
 
         showParking() {
-            axios.get('/api/v1/parkings/' + this.id)
+            axios.get('/api/v1/parkings/' + this.parkingId)
                  .then(response => {
                        this.parking = response.data.data;
                  })
@@ -59,8 +59,24 @@ export default {
                 })
         },
 
-        editParking() {
+        editParking(id) {
 
+            axios.post('/api/v1/parkings/' + id, {
+                _method: 'PUT'
+            })
+            .then(response => {
+                console.log('запись успешна обновлена!');
+            })
+            .catch(error => {
+                console.log(error)
+                this.errored = true
+            })
+            .finally(() => {
+
+                setTimeout(() => {
+                    this.loading = false
+                }, 300)
+            })
         }
     }
 }

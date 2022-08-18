@@ -31,7 +31,7 @@ export default [
         beforeEnter: middleware.user
     },
     {
-        path: '/parking/:id',
+        path: '/parking/:parkingId',
         name: 'parkingShow',
         component: ParkingShow,
         props: true,

@@ -5583,7 +5583,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ParkingShow",
-  props: ['id'],
+  props: ['parkingId'],
   data: function data() {
     return {
       parking: {
@@ -5600,7 +5600,7 @@ __webpack_require__.r(__webpack_exports__);
     showParking: function showParking() {
       var _this = this;
 
-      axios.get('/api/v1/parkings/' + this.id).then(function (response) {
+      axios.get('/api/v1/parkings/' + this.parkingId).then(function (response) {
         _this.parking = response.data.data;
       })["catch"](function (error) {
         // Setting when we have error from server
@@ -5612,7 +5612,22 @@ __webpack_require__.r(__webpack_exports__);
         }, 300);
       });
     },
-    editParking: function editParking() {}
+    editParking: function editParking(id) {
+      var _this2 = this;
+
+      axios.post('/api/v1/parkings/' + id, {
+        _method: 'PUT'
+      }).then(function (response) {
+        console.log('запись успешна обновлена!');
+      })["catch"](function (error) {
+        console.log(error);
+        _this2.errored = true;
+      })["finally"](function () {
+        setTimeout(function () {
+          _this2.loading = false;
+        }, 300);
+      });
+    }
   }
 });
 
@@ -5929,7 +5944,7 @@ var render = function render() {
         to: {
           name: "parkingShow",
           params: {
-            id: parking.id
+            parkingId: parking.id
           }
         }
       }
@@ -6008,11 +6023,11 @@ var render = function render() {
 
   return _c("div", {
     staticClass: "parking_show"
-  }, [_c("h1", [_vm._v("Редактирование стоянки : " + _vm._s(_vm.id))]), _vm._v(" "), _c("form", {
+  }, [_c("h1", [_vm._v("Редактирование стоянки : " + _vm._s(_vm.parkingId))]), _vm._v(" "), _c("form", {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.editParking.apply(null, arguments);
+        return _vm.editParking(_vm.parkingId);
       }
     }
   }, [_c("div", {
@@ -6369,7 +6384,7 @@ __webpack_require__.r(__webpack_exports__);
   component: _views_parking_ParkingCreate__WEBPACK_IMPORTED_MODULE_3__["default"],
   beforeEnter: _middleware__WEBPACK_IMPORTED_MODULE_0__["default"].user
 }, {
-  path: '/parking/:id',
+  path: '/parking/:parkingId',
   name: 'parkingShow',
   component: _views_parking_ParkingShow__WEBPACK_IMPORTED_MODULE_4__["default"],
   props: true,
