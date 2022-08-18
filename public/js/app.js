@@ -5594,7 +5594,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.showParking();
-    this.editParking();
+    this.saveParking();
   },
   methods: {
     showParking: function showParking() {
@@ -5612,13 +5612,15 @@ __webpack_require__.r(__webpack_exports__);
         }, 300);
       });
     },
-    editParking: function editParking(id) {
+    saveParking: function saveParking(id) {
       var _this2 = this;
 
       axios.post('/api/v1/parkings/' + id, {
-        _method: 'PUT'
+        _method: 'PUT',
+        city: this.parking.city,
+        address_parking: this.parking.address_parking
       }).then(function (response) {
-        console.log('запись успешна обновлена!');
+        console.log('запись успешна (' + id + ') обновлена!');
       })["catch"](function (error) {
         console.log(error);
         _this2.errored = true;
@@ -6027,7 +6029,7 @@ var render = function render() {
     on: {
       submit: function submit($event) {
         $event.preventDefault();
-        return _vm.editParking(_vm.parkingId);
+        return _vm.saveParking(_vm.parkingId);
       }
     }
   }, [_c("div", {

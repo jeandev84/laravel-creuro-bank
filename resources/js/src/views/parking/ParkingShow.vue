@@ -1,7 +1,7 @@
 <template>
     <div class="parking_show">
         <h1>Редактирование стоянки : {{ parkingId }}</h1>
-        <form @submit.prevent="editParking(parkingId)">
+        <form @submit.prevent="saveParking(parkingId)">
             <div class="row mb-3">
                 <div class="col-6">
                     <div class="form-group">
@@ -36,7 +36,7 @@ export default {
     },
     mounted() {
         this.showParking();
-        this.editParking();
+        this.saveParking();
     },
     methods: {
 
@@ -59,13 +59,15 @@ export default {
                 })
         },
 
-        editParking(id) {
+        saveParking(id) {
 
             axios.post('/api/v1/parkings/' + id, {
-                _method: 'PUT'
+                _method: 'PUT',
+                city: this.parking.city,
+                address_parking: this.parking.address_parking
             })
             .then(response => {
-                console.log('запись успешна обновлена!');
+                console.log('запись успешна (' + id + ') обновлена!');
             })
             .catch(error => {
                 console.log(error)
