@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Auth\\'], function () {
-    Route::post('login', 'LoginController@index');
-    Route::post('logout', 'LogoutController@index');
-});
-
-Route::group(['middleware' => ['jwt.verify']], function () {
-
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function () {
     Route::apiResources([
         'parkings' => 'ParkingController'
     ]);
-
-    Route::post('refresh-token', 'Auth\\RefreshTokenController@index');
 });
+
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('login', [LoginController::class, 'index']);
+    Route::delete('logout', [LogoutController::class, 'index']);
+});
+
+
