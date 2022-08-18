@@ -19,6 +19,6 @@ export default [
         path: '/parkings',
         name: 'parkings',
         component: ParkingList,
-        // beforeEnter: middleware.user
+        beforeEnter: middleware.user
     },
 ];

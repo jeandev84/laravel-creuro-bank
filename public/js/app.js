@@ -5660,25 +5660,48 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_vm.authenticated ? _c("nav", [_vm.authenticated ? _c("router-link", {
+  return _c("div", [_vm.authenticated ? _c("nav", {
+    staticClass: "navbar navbar-expand-lg navbar-light"
+  }, [_c("div", {
+    staticClass: "container"
+  }, [_c("a", {
+    staticClass: "navbar-brand",
+    attrs: {
+      href: "#"
+    }
+  }, [_vm._v("Credit Europa Bank")]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c("div", {
+    staticClass: "collapse navbar-collapse",
+    attrs: {
+      id: "navbarSupportedContent"
+    }
+  }, [_c("ul", {
+    staticClass: "navbar-nav mr-auto"
+  }, [_c("li", {
+    staticClass: "nav-item active"
+  }, [_c("router-link", {
+    staticClass: "nav-link",
     attrs: {
       to: {
         name: "parkings"
       }
     }
-  }, [_vm._v("Стоянки")]) : _vm._e(), _vm._v(" "), _vm.authenticated ? _c("button", {
+  }, [_vm._v("Стоянки")])], 1)]), _vm._v(" "), _c("ul", {
+    staticClass: "navbar-nav"
+  }, [_c("li", {
+    staticClass: "nav-item"
+  }, [_c("a", {
+    staticClass: "nav-link",
     on: {
       click: _vm.logout
     }
-  }, [_vm._v("Выход")]) : _vm._e(), _vm._v(" "), _vm.loading ? _c("p", [_vm._v("loading...")]) : _vm._e(), _vm._v(" "), _c("div", {
+  }, [_vm._v("Выход")])])])]), _vm._v(" "), _vm.loading ? _c("p", [_vm._v("loading...")]) : _vm._e(), _vm._v(" "), _c("div", {
     staticClass: "errors"
   }, [_vm.error ? _c("p", {
     staticStyle: {
       color: "red"
     }
-  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()])], 1) : _c("form", {
+  }, [_vm._v(_vm._s(_vm.error))]) : _vm._e()])])]) : _vm._e(), _vm._v(" "), !_vm.authenticated ? _c("div", {
     attrs: {
-      action: "",
       id: "login_form"
     }
   }, [_c("div", {
@@ -5740,10 +5763,27 @@ var render = function render() {
     on: {
       click: _vm.login
     }
-  }, [_vm._v("Войти")])])])]);
+  }, [_vm._v("Войти")])])]) : _vm._e()]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("button", {
+    staticClass: "navbar-toggler",
+    attrs: {
+      type: "button",
+      "data-toggle": "collapse",
+      "data-target": "#navbarSupportedContent",
+      "aria-controls": "navbarSupportedContent",
+      "aria-expanded": "false",
+      "aria-label": "Toggle navigation"
+    }
+  }, [_c("span", {
+    staticClass: "navbar-toggler-icon"
+  })]);
+}];
 render._withStripped = true;
 
 
@@ -5917,7 +5957,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   createSession: function createSession() {
-    return _api__WEBPACK_IMPORTED_MODULE_0__["default"].get('/sanctum/csrf-cookie');
+    return _api__WEBPACK_IMPORTED_MODULE_0__["default"].get('http://localhost:8000/sanctum/csrf-cookie');
   },
   login: function login(params) {
     return _api__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/auth/login', params);
@@ -11342,7 +11382,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_laravel_mix_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\nnav[data-v-7201f370] {\n    background-color: #fff;\n    border: 1px solid #eee;\n    padding: 10px;\n    margin: 50px auto;\n}\n#login_form[data-v-7201f370] {\n    background-color: #fff;\n    border: 1px solid #eee;\n    padding: 10px;\n    margin: 50px auto;\n    width: 500px;\n}\nbutton[data-v-7201f370] {\n    /*display: block;*/\n    margin: 0 auto;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\nnav[data-v-7201f370] {\n    background-color: #fff;\n    border: 1px solid #eee;\n    padding: 10px;\n}\n#login_form[data-v-7201f370] {\n    background-color: #fff;\n    border: 1px solid #eee;\n    padding: 10px;\n    margin: 50px auto;\n    width: 500px;\n}\nbutton[data-v-7201f370] {\n    /*display: block;*/\n    margin: 0 auto;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

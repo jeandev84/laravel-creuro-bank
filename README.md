@@ -51,7 +51,7 @@ $ php artisan tinker
 
 Psy Shell v0.11.8 (PHP 8.0.20 — cli) by Justin Hileman
 >>> use App\Models\User;
->>> User::factory()->create(['email' => 'demo@gmail.com', 'password' => '123']);
+>>> User::factory()->create(['email' => 'demo@gmail.com', 'password' => Hash::make('123')]);
 => App\Models\User {#4551
      name: "Tamia Hegmann",
      email: "demo@gmail.com",

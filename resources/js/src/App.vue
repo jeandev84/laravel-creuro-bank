@@ -1,19 +1,39 @@
 <template>
       <div>
-          <nav v-if="authenticated">
-              <!-- <router-link v-if="!authenticated" :to="{name: 'login'}">Вход</router-link> -->
-              <router-link v-if="authenticated"  :to="{name: 'parkings'}">Стоянки</router-link>
-              <button v-if="authenticated" @click="logout">Выход</button>
+          <nav v-if="authenticated" class="navbar navbar-expand-lg navbar-light">
+              <div class="container">
 
-              <p v-if="loading">loading...</p>
+                  <a class="navbar-brand" href="#">Credit Europa Bank</a>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                      <span class="navbar-toggler-icon"></span>
+                  </button>
 
-              <div class="errors">
-                  <p v-if="error" style="color: red;">{{ error }}</p>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                      <ul class="navbar-nav mr-auto">
+                          <!-- <router-link v-if="!authenticated" :to="{name: 'login'}">Вход</router-link> -->
+                          <li class="nav-item active">
+                              <router-link class="nav-link" :to="{name: 'parkings'}">Стоянки</router-link>
+                          </li>
+                      </ul>
+                      <ul class="navbar-nav">
+                          <li class="nav-item">
+                              <a class="nav-link" @click="logout">Выход</a>
+                          </li>
+                      </ul>
+
+                  </div>
+
+                  <p v-if="loading">loading...</p>
+
+                  <div class="errors">
+                      <p v-if="error" style="color: red;">{{ error }}</p>
+                  </div>
               </div>
           </nav>
 
 
-          <form action="" id="login_form" v-else>
+          <div id="login_form" v-if="!authenticated">
               <div class="container">
                   <h3>Credit Europa Bank</h3>
                   <p v-if="loading">loading...</p>
@@ -26,7 +46,7 @@
                   </div>
                   <button class="btn btn-primary" @click="login">Войти</button>
               </div>
-          </form>
+          </div>
 
       </div>
 </template>
@@ -82,7 +102,6 @@ export default {
       background-color: #fff;
       border: 1px solid #eee;
       padding: 10px;
-      margin: 50px auto;
   }
 
   #login_form {
