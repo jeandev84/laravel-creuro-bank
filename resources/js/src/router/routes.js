@@ -3,9 +3,10 @@
 // import Login from "../views/auth/Login";
 
 
-import ParkingList from "../views/parking/Index";
+import ParkingIndex from "../views/parking/ParkingIndex";
 import middleware from './middleware';
 import Login from "../views/auth/Login";
+import ParkingCreate from "../views/parking/ParkingCreate";
 
 
 
@@ -19,7 +20,13 @@ export default [
     {
         path: '/parkings',
         name: 'parkings',
-        component: ParkingList,
+        component: ParkingIndex,
+        beforeEnter: middleware.user
+    },
+    {
+        path: '/parking/create',
+        name: 'parkingCreate',
+        component: ParkingCreate,
         beforeEnter: middleware.user
     },
 ];

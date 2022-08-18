@@ -15,11 +15,16 @@
                           <li class="nav-item active">
                               <router-link class="nav-link" :to="{name: 'parkings'}">Стоянки</router-link>
                           </li>
+                          <li class="nav-item" style="cursor: pointer;">
+                              <a class="nav-link" @click="logout">Выход</a>
+                          </li>
                       </ul>
                   </div>
               </div>
           </nav>
-          <router-view/>
+          <div class="container pt-5">
+              <router-view/>
+          </div>
       </div>
 </template>
 

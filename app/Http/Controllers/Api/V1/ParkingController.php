@@ -18,10 +18,12 @@ class ParkingController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+    */
     public function index()
     {
-          return ParkingResource::collection(Parking::orderBy('created_at', 'desc')->get());
+          return ParkingResource::collection(
+              Parking::orderBy('created_at', 'desc')->get()
+          );
     }
 
 

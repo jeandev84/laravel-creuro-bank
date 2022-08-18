@@ -11,9 +11,5 @@ export default {
 
     logout() {
         return api.delete('/api/auth/logout');
-    },
-
-    getParkings() {
-        return api.get('/api/v1/parkings');
-    },
+    }
 };

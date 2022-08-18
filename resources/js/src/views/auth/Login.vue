@@ -1,17 +1,15 @@
 <template>
     <div id="login_form">
-        <div class="container">
-            <h3>Вход</h3>
-            <p v-if="loading">loading...</p>
-            <p v-if="error" style="color:red">{{ error }}</p>
-            <div class="form-group">
-                <input type="email" class="form-control" placeholder="Введите е-майл" v-model="user.email">
-            </div>
-            <div class="form-group mt-3 mb-3">
-                <input type="password" class="form-control" placeholder="Введите пароль" v-model="user.password">
-            </div>
-            <button class="btn btn-primary" @click="login">Войти</button>
+        <h3>Вход</h3>
+        <p v-if="loading">loading...</p>
+        <p v-if="error" style="color:red">{{ error }}</p>
+        <div class="form-group">
+            <input type="email" class="form-control" placeholder="Введите е-майл" v-model="user.email">
         </div>
+        <div class="form-group mt-3 mb-3">
+            <input type="password" class="form-control" placeholder="Введите пароль" v-model="user.password">
+        </div>
+        <button class="btn btn-primary" @click="login">Войти</button>
     </div>
 </template>
 
