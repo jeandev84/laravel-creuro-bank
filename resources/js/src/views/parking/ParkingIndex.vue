@@ -28,9 +28,9 @@
                      <router-link to="">
                          <i class="fas fa-pencil-alt" style="font-size: 15px; cursor: pointer;"></i>
                      </router-link>
-                     <router-link to="">
-                         <i class="fas fa-trash" style="margin-left: 10px;"></i>
-                     </router-link>
+                     <button @click="deleteParking(parking.id)" class="button_tash">
+                         <i class="fas fa-trash" style="margin-left: 10px; color: red;"></i>
+                     </button>
                  </td>
              </tr>
              </tbody>
@@ -73,11 +73,34 @@ export default {
                         this.loading = false
                     }, 300)
                 })
+        },
+        editParking(id) {
+
+        },
+        deleteParking(id) {
+
+            if(confirm('Вы действительно хотите удалить запись : ' + id + ' ?')) {
+
+                axios.post('/api/v1/parkings/' + id, {
+                    _method: 'DELETE'
+                })
+                .then(response => {
+                    this.parkings = [];
+                    console.log('запись успешна удалена!')
+                    this.getParkings();
+                })
+            }
         }
     }
 }
 </script>
 
 <style scoped>
+
+.button_tash {
+    border: none;
+    text-align: center;
+    background-color: transparent;
+}
 
 </style>
