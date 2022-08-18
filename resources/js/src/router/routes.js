@@ -5,14 +5,15 @@
 
 import ParkingList from "../views/parking/Index";
 import middleware from './middleware';
-import App from "../App";
+import Login from "../views/auth/Login";
+
 
 
 export default [
     {
-        path: '/',
-        name: 'home',
-        component: App,
+        path: '/login',
+        name: 'login',
+        component: Login,
         beforeEnter: middleware.guest,
     },
     {
