@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1\ParkingController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use Illuminate\Support\Facades\Route;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:sanctum'], function () {
     Route::apiResources([
-        'parkings' => 'ParkingController'
+        'parkings' => ParkingController::class
     ]);
 });
 
