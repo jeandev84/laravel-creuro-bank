@@ -19,7 +19,16 @@ import store from './src/store'
 Vue.config.productionTip = false;
 
 new Vue({
+    el: '#app',
+    router,
+    store,
+    render: h => h(App)
+});
+
+/*
+new Vue({
     router,
     store,
     render: h => h(App)
 }).$mount('#app')
+*/

@@ -33,14 +33,6 @@ $ php artisan db:seed
 ```
 
 
-6. Генерация секретного ключа JWT
-```php
-$ php artisan jwt:secret
-
-JWT_TTL=1800
-JWT_SECRET=YourSecretKeyHashed
-```
-
 7. Установки зависимостей для фронтенд части
 ```
 $ npm install
@@ -53,3 +45,21 @@ $ php artisan serve
 ```
 
 
+7. Create User via tinker 
+```
+$ php artisan tinker 
+
+Psy Shell v0.11.8 (PHP 8.0.20 — cli) by Justin Hileman
+>>> use App\Models\User;
+>>> User::factory()->create(['email' => 'demo@gmail.com', 'password' => '123']);
+=> App\Models\User {#4551
+     name: "Tamia Hegmann",
+     email: "demo@gmail.com",
+     email_verified_at: "2022-08-18 13:42:36",
+     #password: "123",
+     #remember_token: "F9s6MzMsBU",
+     updated_at: "2022-08-18 13:42:36",
+     created_at: "2022-08-18 13:42:36",
+     id: 2,
+   }
+```
