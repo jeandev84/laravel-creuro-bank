@@ -6231,7 +6231,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   createSession: function createSession() {
-    return _api__WEBPACK_IMPORTED_MODULE_0__["default"].get('http://localhost:8000/sanctum/csrf-cookie');
+    return _api__WEBPACK_IMPORTED_MODULE_0__["default"].get('/sanctum/csrf-cookie');
   },
   login: function login(params) {
     return _api__WEBPACK_IMPORTED_MODULE_0__["default"].post('/api/auth/login', params);
