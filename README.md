@@ -46,4 +46,6 @@ $ php artisan serve
 
 
 7. Create User via tinker 
-
+```php 
+$ php artisan tinker 
+```
