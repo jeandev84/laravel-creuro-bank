@@ -8,13 +8,11 @@
 
     <title>Стоянки ( Credit Europa Bank )</title>
 
-    <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    -->
 
-    <link rel="stylesheet" href="{{ asset('fonts/css/all.min.css') }}">
-    <script src="{{  asset('fonts/js/all.min.js')}}"></script>
+{{--    <link rel="stylesheet" href="{{ asset('fonts/css/all.min.css') }}">--}}
+{{--    <script src="{{  asset('fonts/js/all.min.js')}}"></script>--}}
 
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
