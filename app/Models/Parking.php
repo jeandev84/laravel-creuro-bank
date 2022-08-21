@@ -13,6 +13,7 @@ class Parking extends Model
 
       use HasFactory;
 
+      const PerPage = 8;
 
       protected $table = 'parkings';
 

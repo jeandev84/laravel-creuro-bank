@@ -20,7 +20,7 @@
              </tr>
              </thead>
              <tbody>
-             <tr v-for="parking in parkings">
+             <tr v-for="parking in parkings.data">
                  <th scope="row">{{ parking.id }}</th>
                  <td>{{ parking.city }}</td>
                  <td>{{ parking.address_parking }}</td>
@@ -35,15 +35,25 @@
              </tr>
              </tbody>
          </table>
+
+         <!-- Pagination -->
+         <pagination :data="parkings" @pagination-change-page="getParkings"/>
+         <!-- Pagination End -->
      </div>
 </template>
 
 <script>
+
+import pagination from 'laravel-vue-pagination';
+
 export default {
     name: "Index",
+    components: {
+       pagination
+    },
     data() {
         return {
-            parkings: [],
+            parkings: {},
             loading: false,
             error: false,
         }
@@ -54,14 +64,14 @@ export default {
     },
     methods: {
 
-        getParkings() {
+        getParkings(page = 1) {
 
-            axios.get('/api/v1/parkings')
-                .then(response => {
-                    // console.log(response.data.data);
-                    this.parkings = response.data.data;
-                })
-                .catch(error => {
+            axios.get('/api/v1/parkings?page=' + page)
+                 .then(response => {
+                    console.log(response.data);
+                    this.parkings = response.data;
+                 })
+                 .catch(error => {
 
                     // Setting when we have error from server
                     console.log(error)
