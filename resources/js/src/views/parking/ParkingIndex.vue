@@ -44,13 +44,8 @@
 
 <script>
 
-import pagination from 'laravel-vue-pagination';
-
 export default {
     name: "Index",
-    components: {
-       pagination
-    },
     data() {
         return {
             parkings: {},

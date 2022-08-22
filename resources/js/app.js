@@ -16,6 +16,7 @@ import router from './src/router'
 import store from './src/store'
 
 
+Vue.component('pagination', require('laravel-vue-pagination'));
 Vue.config.productionTip = false;
 
 new Vue({
